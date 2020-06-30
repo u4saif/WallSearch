@@ -1,0 +1,44 @@
+ <body>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+ 
+  <p> Wall Search </p> 
+   
+
+ <div class="topnav" > 
+  <form (submit)=dosearch(search)>
+      <input type="text"  placeholder="  Search.." name='search' ngModel #search=ngModel>
+      
+        <i (click)='dosearch(search)' class="fa fa-search"></i>
+       
+    </form>
+  
+</div>
+ 
+
+
+<div>
+  <ul *ngIf='showclick'>
+  <li  *ngFor='let item of ImgsObj | async'>
+   <a target="_blank" (click)='view(item)' >
+     <img src={{item.urls.small}} alt="no Img found" >
+   </a>
+</li>
+</ul>
+</div>
+
+
+  <div infiniteScroll [infiniteScrollDistance]="2"
+  [infiniteScrollThrottle]="200"
+  (scrolled)="onScroll()"> 
+ 
+ 
+      <ul>
+      <li  *ngFor='let item of ImgsObj'>
+        <a target="_blank" (click)='view(item)' >
+          <img src={{item.urls.small}} alt="no Img found" >
+       </a>
+    </li>
+   </ul>
+</div>
+
+</body>

@@ -1,0 +1,15 @@
+<div class="topnav" >
+  <h4>Search Results for {{find}}</h4>
+</div>
+
+  <div>
+    <ul  *ngFor='let i of searchObj | async;'>
+      <li  *ngFor='let j of i.results'>
+       <a target="_blank"   (click)='view(j)'  >
+         <img src={{j.urls.small}} alt="" >
+       </a>
+    </li>
+    </ul>
+  </div>
+
+  <a   class="btn btn-danger" routerLink=''>Back</a> 
